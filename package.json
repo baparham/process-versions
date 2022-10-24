@@ -1,0 +1,16 @@
+{
+  "name": "process-versions",
+  "version": "0.1.0",
+  "main": "index.json",
+  "repository": "https://github.com/baparham/process-versions.git",
+  "author": "Brad Parham <baparham@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^17.0.18",
+    "ts-node": "^10.5.0",
+    "typescript": "^4.5.5"
+  },
+  "scripts": {
+    "merge": "ts-node -s scripts/merge.ts"
+  }
+}

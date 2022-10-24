@@ -1,0 +1,57 @@
+name: Update Node.js Versions
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run every two hours
+    - cron:  '0 0/2 * * *'
+  workflow_dispatch:
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 17, 18, 19]
+    steps:
+    - uses: actions/checkout@v3.1.0
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3.5.1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: node -p "JSON.stringify(process.versions)" > ${{ matrix.node-version }}.json
+    - uses: actions/upload-artifact@v3.1.1
+      with:
+        name: deps-${{ matrix.node-version }}
+        path: ${{ matrix.node-version }}.json
+
+  merge:
+    runs-on: ubuntu-latest
+    needs: [collect]
+    steps:
+      - uses: actions/checkout@v3.1.0
+      - name: Use Node.js 19
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: 19
+      - uses: actions/download-artifact@v3.0.1
+        with:
+          path: collected-json
+      - run: yarn install
+      - run: find ./collected-json -name '*.json' | xargs yarn merge index.json
+      - run: cat index.json
+      - run: |
+          if [ "$(git status --porcelain)" = "" ]; then
+            echo "No new data, nothing to commit";
+            exit;
+          else
+            echo "Git contents change, needs new commit"
+            git config user.email baparham@gmail.com
+            git config user.name Brad Parham
+            git add index.json
+            git commit -m "Update dependency data"
+            git push
+          fi
