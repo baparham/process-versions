@@ -1,6 +1,7 @@
 # process-versions
 
-Helps apps determine what dependencies a version of Node.js uses.
+A dataset showing the compiled process version dependencies of different Node.js
+versions
 
 ## Installation
 
@@ -8,7 +9,7 @@ Helps apps determine what dependencies a version of Node.js uses.
 
 `npm install process-versions`
 
-### Javascript usage
+## Javascript usage
 
 ```javascript
 const dependencyData = require('process-versions');
@@ -17,7 +18,7 @@ const dependencyData = require('process-versions');
 console.log(dependencyData['16.13.0'].brotli);
 ```
 
-### Typescript usage
+## Typescript usage
 
 ```typescript
 import dependencyData from 'process-versions';
