@@ -1,3 +1,6 @@
 .github
 scripts
 yarn.lock
+collected-json
+.npmrc
+.gitignore
