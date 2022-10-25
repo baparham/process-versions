@@ -19,4 +19,4 @@ yarn version --patch --message "bump version to %s"
 echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc
 npm publish --registry=https://registry.npmjs.org/
 
-git push --tags
+git push origin main --follow-tags
