@@ -6,7 +6,7 @@ if [ "$(git status --porcelain)" = "" ]; then
 fi
 
 #Exit on failure
-set -x
+set -xe
 
 git config user.email baparham@gmail.com
 git config user.name Brad Parham
