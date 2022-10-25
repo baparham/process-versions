@@ -13,7 +13,7 @@
     "typescript": "^4.5.5"
   },
   "scripts": {
-    "merge": "ts-node -s scripts/merge.ts",
+    "merge": "ts-node -s scripts/merge.ts index.json",
     "release": "./scripts/release.sh"
   }
 }

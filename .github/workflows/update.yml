@@ -41,7 +41,7 @@ jobs:
         with:
           path: collected-json
       - run: yarn install
-      - run: find ./collected-json -name '*.json' | xargs yarn merge index.json
+      - run: find ./collected-json -name '*.json' | xargs yarn merge
       - run: cat index.json
       - name: Publish if necessary
         env:
