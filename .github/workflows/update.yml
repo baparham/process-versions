@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  collect:
+  collect-version-data:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -28,9 +28,9 @@ jobs:
         name: deps-${{ matrix.node-version }}
         path: ${{ matrix.node-version }}.json
 
-  merge:
+  merge-and-release:
     runs-on: ubuntu-latest
-    needs: [collect]
+    needs: [collect-version-data]
     steps:
       - uses: actions/checkout@v3.1.0
       - name: Use Node.js 19
