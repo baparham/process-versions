@@ -22,6 +22,7 @@ jobs:
       uses: actions/setup-node@v3.5.1
       with:
         node-version: ${{ matrix.node-version }}
+        check-latest: true
     - run: node -p "JSON.stringify(process.versions)" > ${{ matrix.node-version }}.json
     - uses: actions/upload-artifact@v3.1.1
       with:
