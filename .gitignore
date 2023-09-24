@@ -6,3 +6,7 @@ node_modules
 
 # CI generated files
 collected-json
+jsons
+new-versions.txt
+node-versions.json
+total-unique-versions.txt
