@@ -21,7 +21,7 @@ jobs:
         run: wget https://nodejs.org/download/release/index.json -O node-versions.json
       - run: |
           ./scripts/nvm-iterator.sh
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: version-jsons
           path: jsons/*.json
