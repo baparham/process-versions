@@ -1,6 +1,6 @@
 {
   "name": "process-versions",
-  "version": "0.3.79",
+  "version": "0.3.80",
   "main": "index.json",
   "repository": "https://github.com/baparham/process-versions.git",
   "author": "Brad Parham <baparham@gmail.com>",
