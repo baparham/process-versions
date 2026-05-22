@@ -16,7 +16,6 @@ git add index.json
 yarn version --patch --message "bump version to %s"
 
 # Publish new version to NPM
-echo //registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN} > .npmrc
 npm publish --registry=https://registry.npmjs.org/
 
 git push origin main --follow-tags
